@@ -92,7 +92,7 @@ export const CmdPaletteContext = createContext<any>({
 
 const CmdPaletteProvider = ({ children }: PropsWithChildren<{}>) => {
   const [query, setQuery] = useState("");
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <CmdPaletteContext.Provider

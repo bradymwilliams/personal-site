@@ -41,7 +41,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="dark h-full">
+      <body className="mx-auto h-full min-h-screen max-w-3xl bg-slate-800">
         <Layout>
           <Outlet />
         </Layout>

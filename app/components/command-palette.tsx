@@ -16,6 +16,7 @@
 */
 import { Fragment, useContext, useState } from "react";
 import { Combobox, Dialog, Transition } from "@headlessui/react";
+import { useKeyPressEvent } from "react-use";
 import { SearchIcon } from "@heroicons/react/solid";
 import {
   DocumentAddIcon,
@@ -47,6 +48,15 @@ export default function CommandPalette() {
   const { query, setQuery, open, setOpen, searchItems } =
     useContext(CmdPaletteContext);
 
+  useKeyPressEvent((e) => {
+    if (!open && e.key === "k" && (e.metaKey || e.ctrlKey)) {
+      e.stopPropagation();
+      e.preventDefault();
+      setOpen(true);
+    }
+    return true;
+  });
+
   const filteredProjects =
     query === ""
       ? []
@@ -55,7 +65,7 @@ export default function CommandPalette() {
         });
 
   return (
-    <Transition.Root show={false} as={Fragment} afterLeave={() => setQuery("")}>
+    <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery("")}>
       <Dialog
         as="div"
         className="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20"
@@ -83,6 +93,7 @@ export default function CommandPalette() {
           leaveTo="opacity-0 scale-95"
         >
           <Combobox
+            value=""
             as="div"
             className="mx-auto max-w-2xl transform divide-y divide-gray-500 divide-opacity-20 overflow-hidden rounded-xl bg-gray-900 shadow-2xl transition-all"
             onChange={(item: any) => (window.location = item.url)}
