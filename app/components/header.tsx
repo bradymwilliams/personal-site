@@ -6,17 +6,21 @@ const Header = () => {
   const { setOpen } = useContext(CmdPaletteContext);
 
   return (
-    <nav className="container px-4 py-2 font-sans sm:px-1">
-      <div className="group flex justify-between text-zinc-50">
-        <div className="flex">
-          <Link to="/" className="group font-bold">
-            Brady.{" "}
-            <span className="inline-block scale-y-100 -scale-x-100 ease-[cubic-bezier(.36,.07,.19,.97)] hover:animate-[shake_.82s_both] group-hover:animate-[shake_.82s_both]">
-              🏎️
-            </span>
-          </Link>
-        </div>
-        <div className="">
+    <nav className="bg-slate-900">
+      <div className="align-center mx-auto flex max-w-2xl justify-between px-4 py-2 text-zinc-50 sm:px-1">
+        <Link to="/" className="align-center group flex">
+          {/* Brady.{" "} */}
+          <span className="sr-only">Brady</span>
+          <img
+            className="inline-block h-8 w-auto"
+            src="/images/name-logo.png"
+            alt="Brady name logo"
+          />
+          <span className="relative bottom-1 mx-2 inline-block scale-y-100 -scale-x-100 text-3xl ease-[cubic-bezier(.36,.07,.19,.97)] hover:animate-[shake_.82s_both] group-hover:animate-[shake_.82s_both]">
+            🏎️
+          </span>
+        </Link>
+        <div className="self-center">
           <button
             type="button"
             className="rounded-md border border-zinc-50 p-1"
@@ -46,4 +50,3 @@ const Header = () => {
 };
 
 export default Header;
-// <div class="chakra-container css-1w19xm6"><a aria-current="page" class="active" href="/"><h2 class="chakra-heading css-1lx9ouy" role=""><span data-peer="true">Brady.</span><span class="css-edpnf5">🏎️</span></h2></a><div class="chakra-stack css-1kh6kns"><button type="button" class="chakra-button css-maz4xt" aria-label="command palette"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path></svg></button></div></div>
