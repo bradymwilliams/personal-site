@@ -27,6 +27,12 @@ const perks = [
   },
 ];
 
+export const meta: MetaFunction = () => {
+  return {
+    description: "Just a little about me.."
+  };
+};
+
 export default function Index() {
   return (
     <div className="relative">

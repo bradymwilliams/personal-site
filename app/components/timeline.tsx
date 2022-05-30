@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { ChatAltIcon, TagIcon, CakeIcon } from '@heroicons/react/solid'
+import { ChatAltIcon, CakeIcon } from '@heroicons/react/solid'
 
 const activity = [
   {
