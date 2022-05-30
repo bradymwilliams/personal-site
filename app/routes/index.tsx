@@ -1,9 +1,10 @@
-import { ExternalLinkIcon } from "@heroicons/react/outline";
+import { ExternalLinkIcon } from "@heroicons/react/solid";
 import {
   BookOpenIcon,
-  ChartBarIcon,
+  BeakerIcon,
   StatusOnlineIcon,
 } from "@heroicons/react/outline";
+import Timeline from "~/components/timeline";
 
 const perks = [
   {
@@ -16,11 +17,11 @@ const perks = [
     name: "Currently Learning",
     colorClass: "text-purple-400",
     description: "AWS Serverless Architecture, Typescript, NoSQL",
-    icon: ChartBarIcon,
+    icon: BeakerIcon,
   },
   {
     name: "Currently Reading",
-    colorClass: "text-green-400",
+    colorClass: "text-brown-400",
     description: "Almanack Of Naval Ravikant: A Guide To Wealth And Happiness",
     icon: BookOpenIcon,
   },
@@ -28,8 +29,8 @@ const perks = [
 
 export default function Index() {
   return (
-    <div className="container relative">
-      <div className="mx-auto max-w-6xl px-4 pt-4 pb-8 sm:px-6 lg:px-8">
+    <div className="relative">
+      <div className="container mx-auto max-w-6xl px-4 pt-4 pb-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="aspect-w-3 aspect-h-2 md:space-y-4">
             <img
@@ -106,6 +107,11 @@ export default function Index() {
             );
           })}
         </div>
+      </div>
+
+      <div className="mx-auto max-w-lg px-6 py-6">
+        <Timeline />
+
       </div>
     </div>
   );

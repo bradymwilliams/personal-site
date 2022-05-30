@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <nav className="bg-slate-900">
-      <div className="align-center mx-auto flex max-w-2xl justify-between px-4 py-2 text-zinc-50 sm:px-1">
+      <div className="align-center mx-auto flex max-w-2xl justify-between px-4 py-6 text-zinc-50 sm:px-1">
         <Link to="/" className="align-center group flex">
           {/* Brady.{" "} */}
           <span className="sr-only">Brady</span>

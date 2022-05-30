@@ -37,7 +37,7 @@ export default function Uses() {
                   />
                   <div>
                     <h3 className="font-bold text-xl text-white mb-2">{item.title}</h3>
-                    <p className="text-gray-600 text-lg">{item.description}</p>
+                    <p className="text-gray-200 text-lg">{item.description}</p>
                   </div>
                 </a>
               </li>
