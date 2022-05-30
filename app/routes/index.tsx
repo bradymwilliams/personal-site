@@ -5,6 +5,7 @@ import {
   StatusOnlineIcon,
 } from "@heroicons/react/outline";
 import Timeline from "~/components/timeline";
+import { MetaFunction } from "remix";
 
 const perks = [
   {
@@ -29,7 +30,7 @@ const perks = [
 
 export const meta: MetaFunction = () => {
   return {
-    description: "Just a little about me.."
+    description: "Just a little about me..",
   };
 };
 
@@ -117,7 +118,6 @@ export default function Index() {
 
       <div className="mx-auto max-w-lg px-6 py-6">
         <Timeline />
-
       </div>
     </div>
   );
