@@ -1,0 +1,75 @@
+---
+meta:
+  title: "Coolwhip - Clearlink WordPress | bradymwilliams.dev"
+  description: "One system to rule them all"
+---
+
+## CLWP - What's in a name?
+
+### THE PROBLEM
+
+The problem was simple, **we were the bottleneck**.
+
+Maintaining a portfolio of sites both built and bought over the course of a decade was weighing down on productivity.
+
+Responsible for `300+ Million` sessions each year, we were immensely proud of our work, we often found ourselves stuck between a rock and a hard place as the maitenence footprint kept growing despite our best efforts to stay organized.
+
+![Clearlink Consumer Brands Portfolio](/images/brands.png)
+
+While their overall strategies were quite similar, each site existed in their own vacuum; all with their own little unique twists and takes on tables, product cards, top 5 lists and all of the the `Click Thru Rate` optimized components the site teams could come up with.
+
+Times were good and times were bad: All of our flagship sites were ranking strongly, iterating quickly, and failing fast. The `"tech-debt"` was piling up.
+
+    - Site A testing a table redesign
+    - Site B fixed a mobile render bug in the text
+    - Site C just built scrolling hero cards
+    - Huge opportunity to add Strutured Data Markup to all pages/components
+    - Aqcuired Site K, lets get component 8 from Site E, component 3 from Site F
+    - Site B wants the new table design styled to their site
+    - Sites A, C-J need to bring in the bug fix from Site B
+    - ...
+    - ...
+
+These problems grew exponentially and were getting near impossible to prioritize.
+
+### Solution: Enter CLWP
+
+#### The Brass Tax
+
+    - The flagship sites were built on a glorified router of a CMS (in the LAMP Stack) with a WordPress blog reverse proxied into a subfolder.
+    - Our aquired sites were custom WordPress themes
+    - Our potential acquisitions were all custom WordPress themes
+    - Team consisted of primarily Jr. level front-end developers
+
+#### The Plan
+
+> Centralize all of the components, THEN theme them.
+
+    - Grab the best converting/performant version of all these components
+        - Optimize schema and SEO opportunities with SEO
+        - Normalize against a design system with Design team
+        - Implement a holistic click tracking
+    - Due dilligence on WordPress based page builders vs building on from scratch (selected: Elementor)
+        - Future thinking: must save page data as JSON for future Headless WordPress
+    - Generate component schema, options, and variants
+    - Build a scraper/migration tool to transpile our existing sites and future acquisitions
+
+#### The Outcome
+
+> It takes a long time to turn a big ship
+
+Over the course of two years we migrated 9 sites and deployed 4 new ones
+
+###### Productivity Gains
+
+We are no longer the bottleneck!
+
+- 80% reduction in time spent on design related tickets
+- Content time-to-market 10x
+- Bug fixes happen once, deployed portfolio-wide
+
+#### Site Performance Gains
+
+- Improved Site Speed: `40%`
+- Portfolio wide component click tracking
+- SEO Best Practices by default, 21% increase in featured snippets
