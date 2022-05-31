@@ -87,7 +87,6 @@ export const CmdPaletteContext = createContext<any>({
   setQuery: () => {},
   open: () => {},
   close: () => {},
-  items: [],
 });
 
 const CmdPaletteProvider = ({ children }: PropsWithChildren<{}>) => {
@@ -101,7 +100,6 @@ const CmdPaletteProvider = ({ children }: PropsWithChildren<{}>) => {
         setQuery,
         open,
         setOpen,
-        searchItems,
       }}
     >
       {children}

@@ -1,43 +1,28 @@
-/*
-  This example requires Tailwind CSS v3.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 import { Combobox, Dialog, Transition } from "@headlessui/react";
 import { useKeyPressEvent } from "react-use";
 import { SearchIcon } from "@heroicons/react/solid";
-import {
-  DocumentAddIcon,
-  FolderAddIcon,
-  FolderIcon,
-  HashtagIcon,
-  TagIcon,
-} from "@heroicons/react/outline";
+import { IoLogoLinkedin, IoLogoGithub } from "react-icons/io5";
+import { FolderIcon, LinkIcon } from "@heroicons/react/outline";
+
+import { GITHUB_PROFILE, LINKEDIN_PROFILE } from "~/constants";
 
 import { CmdPaletteContext } from "~/providers/command-palette-provider";
 
 const projects = [
-  { id: 1, name: "Workflow Inc. / Website Redesign", url: "#" },
-  // More projects...
+  { id: 1, name: "Home", url: "/" },
+  { id: 2, name: "Uses", url: "/uses" },
+  // { id: 4, name: "Sim Racing", url: "/sim-racing" },
 ];
-const recent = [projects[0]];
+
 const quickActions = [
-  { name: "Add new file...", icon: DocumentAddIcon, shortcut: "N", url: "#" },
-  { name: "Add new folder...", icon: FolderAddIcon, shortcut: "F", url: "#" },
-  { name: "Add hashtag...", icon: HashtagIcon, shortcut: "H", url: "#" },
-  { name: "Add label...", icon: TagIcon, shortcut: "L", url: "#" },
+  { name: "Github", icon: IoLogoGithub, shortcut: "H", url: GITHUB_PROFILE },
+  {
+    name: "LinkedIn",
+    icon: IoLogoLinkedin,
+    shortcut: "L",
+    url: LINKEDIN_PROFILE,
+  },
 ];
 
 function classNames(...classes: Array<string | boolean>) {
@@ -45,8 +30,7 @@ function classNames(...classes: Array<string | boolean>) {
 }
 
 export default function CommandPalette() {
-  const { query, setQuery, open, setOpen, searchItems } =
-    useContext(CmdPaletteContext);
+  const { query, setQuery, open, setOpen } = useContext(CmdPaletteContext);
 
   useKeyPressEvent((e) => {
     if (!open && e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -118,11 +102,11 @@ export default function CommandPalette() {
                 <li className="p-2">
                   {query === "" && (
                     <p className="mt-4 mb-2 px-3 text-xs font-semibold text-gray-200">
-                      Recent searches
+                      Pages
                     </p>
                   )}
                   <ul className="text-sm text-gray-400">
-                    {(query === "" ? recent : filteredProjects).map(
+                    {(query === "" ? projects : filteredProjects).map(
                       (project) => (
                         <Combobox.Option
                           key={project.id}
@@ -136,7 +120,7 @@ export default function CommandPalette() {
                         >
                           {({ active }) => (
                             <>
-                              <FolderIcon
+                              <LinkIcon
                                 className={classNames(
                                   "h-6 w-6 flex-none",
                                   active ? "text-white" : "text-gray-500"
@@ -185,12 +169,6 @@ export default function CommandPalette() {
                               <span className="ml-3 flex-auto truncate">
                                 {action.name}
                               </span>
-                              <span className="ml-3 flex-none text-xs font-semibold text-gray-400">
-                                <kbd className="font-sans">⌘</kbd>
-                                <kbd className="font-sans">
-                                  {action.shortcut}
-                                </kbd>
-                              </span>
                             </>
                           )}
                         </Combobox.Option>
@@ -208,8 +186,7 @@ export default function CommandPalette() {
                   aria-hidden="true"
                 />
                 <p className="mt-4 text-sm text-gray-200">
-                  We couldn't find any projects with that term. Please try
-                  again.
+                  We couldn't find any pages with that term. Please try again.
                 </p>
               </div>
             )}
