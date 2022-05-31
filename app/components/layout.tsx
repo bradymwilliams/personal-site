@@ -10,7 +10,7 @@ const Layout = ({ children }: Props) => {
   return (
     <>
       <CmdPaletteProvider>
-        <div className="relative bg-slate-900">
+        <div className="relative">
           <Header />
 
           {children}

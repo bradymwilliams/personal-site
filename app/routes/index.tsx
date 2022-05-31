@@ -1,11 +1,16 @@
+import { json, LoaderFunction } from "remix";
+import { useLoaderData } from "@remix-run/react";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
 import {
   BookOpenIcon,
   BeakerIcon,
   StatusOnlineIcon,
 } from "@heroicons/react/outline";
-import Timeline from "~/components/timeline";
 import { MetaFunction } from "remix";
+import FromTheBlog from "~/components/latest-blog";
+
+import { getPosts } from "~/models/post.server";
+import PortfolioSection from "~/components/portfolio-section";
 
 const perks = [
   {
@@ -22,7 +27,7 @@ const perks = [
   },
   {
     name: "Currently Reading",
-    colorClass: "text-brown-400",
+    colorClass: "text-rose-500",
     description: "Almanack Of Naval Ravikant: A Guide To Wealth And Happiness",
     icon: BookOpenIcon,
   },
@@ -34,23 +39,35 @@ export const meta: MetaFunction = () => {
   };
 };
 
+type LoaderData = {
+  // this is a handy way to say: "posts is whatever type getPosts resolves to"
+  posts: Awaited<ReturnType<typeof getPosts>>;
+};
+
+export const loader: LoaderFunction = async () => {
+  const posts = await getPosts(2);
+  return json({ posts });
+};
+
 export default function Index() {
+  const { posts } = useLoaderData<LoaderData>();
   return (
-    <div className="relative">
-      <div className="container mx-auto max-w-6xl px-4 pt-4 pb-8 sm:px-6 lg:px-8">
+    <div className="relative bg-slate-900">
+      <div className="container mx-auto max-w-5xl px-4 pt-4 pb-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="aspect-w-3 aspect-h-2 md:space-y-4">
             <img
-              className="rounded-lg object-cover shadow-lg"
+              className="mx-auto max-w-md rounded-lg object-cover shadow-lg"
+              loading="lazy"
               src="/images/wedge.jpeg"
               alt=""
             />
           </div>
           <div className="lg:col-span-1">
-            <p className="text-md font-semibold uppercase tracking-wide text-red-600">
+            <p className="text-md font-semibold uppercase tracking-wide text-white">
               Hi, my name is
             </p>
-            <h2 className="text-4xl font-extrabold text-white">
+            <h2 className="bg-gradient-to-br from-purple-400 to-red-900 bg-clip-text text-4xl font-extrabold text-transparent">
               Brady Williams
             </h2>
             <p className="mt-6 text-gray-100 md:text-lg">
@@ -65,7 +82,7 @@ export default function Index() {
               as the Director of Software Engineering, after serving as both a
               manager and team lead for our Consumer Brands engineering team.
               I'm a mission focused generalist who drives team focus towards
-              business needs.
+              business needs. Reach out on LinkedIn for my resume!
             </p>
             <div className="mt-3 text-xl">
               <a
@@ -74,7 +91,7 @@ export default function Index() {
               >
                 Github
                 <ExternalLinkIcon
-                  className="ml-2 -mr-0.5 h-4 w-4"
+                  className="ml-2 -mr-0.5 h-4 w-4 text-sky-600"
                   aria-hidden="true"
                 />
               </a>
@@ -84,7 +101,7 @@ export default function Index() {
               >
                 LinkedIn
                 <ExternalLinkIcon
-                  className="ml-2 -mr-0.5 h-4 w-4"
+                  className="ml-2 -mr-0.5 h-4 w-4 text-sky-600"
                   aria-hidden="true"
                 />
               </a>
@@ -116,8 +133,10 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-lg px-6 py-6">
-        <Timeline />
+      <div className="mx-auto px-6 py-6">
+        {/* <FromTheBlog posts={posts} /> */}
+        <PortfolioSection />
+        {/* <Timeline /> */}
       </div>
     </div>
   );

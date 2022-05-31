@@ -12,8 +12,7 @@ import { CmdPaletteContext } from "~/providers/command-palette-provider";
 const projects = [
   { id: 1, name: "Home", url: "/" },
   { id: 2, name: "Uses", url: "/uses" },
-  { id: 3, name: "Sim Racing", url: "/sim-racing" },
-  // More projects...
+  // { id: 4, name: "Sim Racing", url: "/sim-racing" },
 ];
 
 const quickActions = [
@@ -170,12 +169,6 @@ export default function CommandPalette() {
                               <span className="ml-3 flex-auto truncate">
                                 {action.name}
                               </span>
-                              {/* <span className="ml-3 flex-none text-xs font-semibold text-gray-400">
-                                <kbd className="font-sans">⌘</kbd>
-                                <kbd className="font-sans">
-                                  {action.shortcut}
-                                </kbd>
-                              </span> */}
                             </>
                           )}
                         </Combobox.Option>

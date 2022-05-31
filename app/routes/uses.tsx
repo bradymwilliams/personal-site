@@ -12,39 +12,50 @@ export default function Uses() {
   const { tools, categories } = useLoaderData();
 
   return (
-    <div className="container mx-auto mt-16 max-w-2xl p-4">
-      <div className="text-white">
-        <h1 className="text-2xl font-bold">Software Tools</h1>
-        <p className="mt-6 text-lg">
-          This is my list of software tools that I use frequently to get things
-          done.
-        </p>
-      </div>
-      {categories.map((category: any) => (
-        <div key={category} className="mt-12 mb-8 ">
-          <h3 className="mb-4 text-xl font-bold text-white">{category}</h3>
-          <ul className="">
-            {tools[category].map((item: any) => (
-              <li
-                key={item.title}
-                className="space-between px-2 md:px-1 py-4 border-2 border-transparent hover:border-gray-700 hover:border-2 rounded-md"
-              >
-                <a href={item.url} className="md:flex " target="_blank" rel="noreferrer">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-20 w-20 mx-auto block md:self-center md:mr-4 md:ml-0"
-                  />
-                  <div>
-                    <h3 className="font-bold text-xl text-white mb-2">{item.title}</h3>
-                    <p className="text-gray-200 text-lg">{item.description}</p>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
+    <div className="bg-slate-900">
+      <div className="container mx-auto max-w-2xl px-4 py-12">
+        <div className="text-white">
+          <h1 className="text-2xl font-bold">Software Tools</h1>
+          <p className="mt-6 text-lg">
+            This is my list of software tools that I use frequently to get
+            things done.
+          </p>
         </div>
-      ))}
+        {categories.map((category: any) => (
+          <div key={category} className="mt-12 mb-8 ">
+            <h3 className="mb-4 text-xl font-bold text-white">{category}</h3>
+            <ul className="">
+              {tools[category].map((item: any) => (
+                <li
+                  key={item.title}
+                  className="space-between rounded-md border-2 border-transparent px-2 py-4 hover:border-2 hover:border-gray-700 md:px-1"
+                >
+                  <a
+                    href={item.url}
+                    className="md:flex "
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="mx-auto block h-20 w-20 md:mr-4 md:ml-0 md:self-center"
+                    />
+                    <div>
+                      <h3 className="mb-2 text-xl font-bold text-white">
+                        {item.title}
+                      </h3>
+                      <p className="text-lg text-gray-200">
+                        {item.description}
+                      </p>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
