@@ -29,6 +29,12 @@ const perks = [
   },
 ];
 
+export function headers() {
+  return {
+    "Cache-Control": "max-age=5400",
+  };
+}
+
 export const meta: MetaFunction = () => {
   return {
     description: "Just a little about me..",
