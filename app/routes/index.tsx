@@ -7,10 +7,6 @@ import {
   StatusOnlineIcon,
 } from "@heroicons/react/outline";
 import { MetaFunction } from "remix";
-import FromTheBlog from "~/components/latest-blog";
-
-import { getPosts } from "~/models/post.server";
-import PortfolioSection from "~/components/portfolio-section";
 
 const perks = [
   {
@@ -39,18 +35,23 @@ export const meta: MetaFunction = () => {
   };
 };
 
-type LoaderData = {
-  // this is a handy way to say: "posts is whatever type getPosts resolves to"
-  posts: Awaited<ReturnType<typeof getPosts>>;
-};
+// type LoaderData = {
+//   // this is a handy way to say: "posts is whatever type getPosts resolves to"
+//   // posts: Awaited<ReturnType<typeof getPosts>>;
+// };
 
 export const loader: LoaderFunction = async () => {
-  const posts = await getPosts(2);
-  return json({ posts });
+  const res = await fetch(
+    "https://gitconnected.com/v1/portfolio/bradymwilliams"
+  );
+
+  const { projects } = await res.json();
+
+  return json({ projects });
 };
 
 export default function Index() {
-  const { posts } = useLoaderData<LoaderData>();
+  const { projects } = useLoaderData();
   return (
     <div className="relative bg-slate-900">
       <div className="container mx-auto max-w-5xl px-4 pt-4 pb-8 sm:px-6 lg:px-8">
@@ -133,11 +134,55 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="mx-auto px-6 py-6">
-        {/* <FromTheBlog posts={posts} /> */}
-        <PortfolioSection />
-        {/* <Timeline /> */}
+      <div className="container py-16">
+        <h2 className="mb-12 text-center text-3xl font-bold text-white">
+          Featured Projects
+        </h2>
+        <div className="mx-auto max-w-2xl px-8">
+          {projects.map((project: any, i: number) => {
+            return <ProjectCard project={project} key={i} />;
+          })}
+        </div>
       </div>
     </div>
   );
 }
+
+const ProjectCard = ({
+  project,
+}: {
+  project: {
+    displayName: string;
+    languages: string[];
+    libraries: string[];
+    summary: string;
+    description: string;
+  };
+}) => {
+  const technology = [...project.languages, ...project.libraries];
+  return (
+    <div className={`mb-8 rounded-sm bg-white p-8`}>
+      <h3 className="mb-1 text-lg font-bold leading-5">
+        {project.displayName}
+      </h3>
+      <p className="mt-2 pb-4 text-sm text-gray-600">{project.summary}</p>
+      <hr />
+      <div className="pt-4">
+        {technology.map((name: any, i: number) => (
+          <ProjectCardTile name={name} key={i} />
+        ))}
+      </div>
+      {project.description ? (
+        <p className="mt-2 whitespace-pre-wrap text-sm text-gray-600">
+          {project.description}
+        </p>
+      ) : null}
+    </div>
+  );
+};
+
+const ProjectCardTile = ({ name }: { name: String }) => (
+  <div className="mr-3 mb-2 inline-block rounded bg-sky-100 px-3 py-2 text-xs text-sky-700">
+    {name}
+  </div>
+);

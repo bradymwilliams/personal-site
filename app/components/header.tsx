@@ -7,16 +7,15 @@ const Header = () => {
 
   return (
     <nav className="bg-slate-900">
-      <div className="align-center mx-auto flex max-w-5xl justify-between px-4 py-6 text-zinc-50 sm:px-1">
-        <Link to="/" className="align-center group flex">
-          {/* Brady.{" "} */}
+      <div className="align-center mx-auto flex max-w-5xl justify-between px-4 py-6 text-zinc-50">
+        <Link to="/" className="align-center group flex items-baseline">
           <span className="sr-only">Brady</span>
           <img
-            className="inline-block h-10 w-auto"
+            className="h-10 w-auto"
             src="/images/name-logo.png"
             alt="Brady name logo"
           />
-          <span className="relative bottom-1 mx-2 inline-block scale-y-100 -scale-x-100 text-3xl ease-[cubic-bezier(.36,.07,.19,.97)] hover:animate-[shake_.82s_both] group-hover:animate-[shake_.82s_both]">
+          <span className="relative -top-2 ml-2 scale-y-100 -scale-x-100 text-3xl ease-[cubic-bezier(.36,.07,.19,.97)] hover:animate-[shake_.82s_both] group-hover:animate-[shake_.82s_both]">
             🏎️
           </span>
         </Link>
