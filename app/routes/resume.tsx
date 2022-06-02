@@ -70,7 +70,7 @@ export default function Resume() {
           <div className="flex flex-wrap">
             {skills.map(({ name }: { name: string }, i: number) => (
               <span
-                className="mb-2 mr-2 whitespace-nowrap rounded-full border border-black p-1 text-xs text-xs font-bold"
+                className="mb-2 mr-2 whitespace-nowrap rounded-full border border-black p-1 text-xs font-bold"
                 key={i}
               >
                 {name}

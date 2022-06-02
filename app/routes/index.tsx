@@ -59,7 +59,8 @@ export default function Index() {
           <div className="aspect-w-3 aspect-h-2 md:space-y-4">
             <img
               className="mx-auto max-w-md rounded-lg object-cover shadow-lg"
-              loading="lazy"
+              height="245"
+              width="368"
               src="/images/wedge.jpeg"
               alt=""
             />
@@ -87,20 +88,20 @@ export default function Index() {
             </p>
             <div className="mt-3 text-xl">
               <a
-                href="https://github.com/bradymwilliams/"
+                href="https://www.linkedin.com/in/brady-williams-89250777"
                 className="inline-flex items-center rounded-md  border-transparent px-3 py-2 font-medium leading-4 text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                Github
+                LinkedIn
                 <ExternalLinkIcon
                   className="ml-2 -mr-0.5 h-4 w-4 text-sky-600"
                   aria-hidden="true"
                 />
               </a>
               <a
-                href="https://www.linkedin.com/in/brady-williams-89250777"
+                href="https://github.com/bradymwilliams/"
                 className="inline-flex items-center rounded-md  border-transparent px-3 py-2 font-medium leading-4 text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                LinkedIn
+                Github
                 <ExternalLinkIcon
                   className="ml-2 -mr-0.5 h-4 w-4 text-sky-600"
                   aria-hidden="true"
